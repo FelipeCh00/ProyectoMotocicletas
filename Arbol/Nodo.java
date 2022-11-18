@@ -4,10 +4,10 @@ import java.util.Scanner;
 
 public class Nodo {
 
-    Nodo izquierda = null;
-    Nodo derecha = null;
-    Componente cabeza = null;
-    Componente fin = null;
+    public Nodo izquierda = null;
+    public Nodo derecha = null;
+    public Componente cabeza = null;
+    public Componente fin = null;
     private String placa;
     private int cilindraje;
     private String modelo;

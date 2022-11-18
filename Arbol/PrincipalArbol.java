@@ -1,4 +1,6 @@
 package ProyectoMotocicletas.Arbol;
+import ProyectoMotocicletas.Ventanas.VentanaInsertar;
+
 import java.io.InputStreamReader;
 import java.util.Scanner;
 
@@ -32,6 +34,8 @@ public class PrincipalArbol {
         }
     }
 
+
+    // MENÚ
     public int menu() {
         int opcion;
         System.out.println("******** Digite una opción *********+");
@@ -54,6 +58,7 @@ public class PrincipalArbol {
         }
     }
 
+    // OPCIONES MENU
     public void solicitarDatos() {
         int opcion;
         abrirFlujo();
@@ -115,7 +120,7 @@ public class PrincipalArbol {
         } while (opcion != 8);
     }
 
-
+    // INGRESO DE DATOS
     public Nodo crearNodo() {
 
         Nodo nuevoNodo = new Nodo();
@@ -123,13 +128,19 @@ public class PrincipalArbol {
         nuevoNodo.setPlaca(leer());
         System.out.println("Ingrese el modelo: ");
         nuevoNodo.setModelo(leer());
-        System.out.println("Ingrese el cilindraje: ");
-        nuevoNodo.setCilindraje(Integer.parseInt(leer()));
+        System.out.println("Ingrese el cilindraje (solo números): ");
+        try{
+            nuevoNodo.setCilindraje(Integer.parseInt(leer()));
+        }catch (Exception e){
+            System.out.println("Cilindraje invalido");
+        }
+
         System.out.println("Ingrese el color: ");
         nuevoNodo.setColor(leer());
         return nuevoNodo;
     }
 
+    // CREACION DEL ARBOL E INSERCION DE NODOS
     public void insertarNodo() {
 
         Nodo motoNueva = crearNodo();
@@ -163,6 +174,7 @@ public class PrincipalArbol {
         }
     }
 
+    // BUSCAR NODOS
     public Nodo buscarMoto(String placa) {
 
         if(raiz!=null){
@@ -184,6 +196,7 @@ public class PrincipalArbol {
         return null;
     }
 
+    // CREAR LISTAS EN NODOS
     public void crearListaComponentes() {
 
         System.out.println("Digite la placa de la moto que necesita para agregarlo: ");
@@ -207,7 +220,7 @@ public class PrincipalArbol {
     }
 
 
-
+    // IMPRIMIR COMPONENTES
     public void imprimirComponentes() {
 
         System.out.println("Digite la placa de la moto que necesita: ");

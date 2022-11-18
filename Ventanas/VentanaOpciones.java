@@ -9,11 +9,13 @@ public class VentanaOpciones extends JFrame {
 
 
     private JLabel textoOpciones;
-    private JButton insertar;
-    private JButton eliminar;
-    private JButton listar;
-    private JButton lista;
-    private JButton vender;
+    private JButton insertarMotocicletas;
+    private JButton eliminarMotocicletas;
+    private JButton listarMotocicletas;
+    private JButton listarComponentes;
+    private JButton agregarComponentes;
+    private JButton eliminarComponentes;
+    private JButton venderMotocicletas;
     private JButton salirOpciones;
     private JLabel imagenBanner;
     private JLabel imagenArbol;
@@ -30,12 +32,16 @@ public class VentanaOpciones extends JFrame {
     }
     public void inicializarComponentes() {
         this.textoOpciones = new JLabel("Opciones", SwingConstants.CENTER);
-        this.insertar = new JButton("Insertar Motocicleta");
-        this.eliminar = new JButton("Eliminar Motocicleta");
-        this.listar = new JButton("Listar Motocicletas");
-        this.lista = new JButton("Listar Componentes");
-        this.vender = new JButton("Vender Motocicleta");
+
+        this.agregarComponentes = new JButton("Agregar Componentes");
+        this.eliminarComponentes = new JButton("Eliminar Componentes");
+        this.insertarMotocicletas = new JButton("Agregar Motocicleta");
+        this.eliminarMotocicletas = new JButton("Eliminar Motocicleta");
+        this.listarMotocicletas = new JButton("Listar Motocicletas");
+        this.listarComponentes = new JButton("Listar Componentes");
+        this.venderMotocicletas = new JButton("Vender Motocicleta");
         this.salirOpciones = new JButton("Atrás");
+
         this.imagenFondo = new JLabel();
     }
 
@@ -48,39 +54,56 @@ public class VentanaOpciones extends JFrame {
         this.textoOpciones.setFont(new Font("Felix Titling", Font.BOLD, 40));
 
         // BOTON INSERTAR MOTO
-        this.insertar.setBounds(130, 190, 250, 30);
-        this.insertar.setBackground(Color.WHITE);
-        this.insertar.setForeground(new Color(3, 92, 134));
-        this.insertar.setFont(new Font("Roboto", Font.BOLD, 20));
-        this.insertar.setEnabled(true); // Encendido del botón
+        this.insertarMotocicletas.setBounds(130, 190, 250, 30);
+        this.insertarMotocicletas.setBackground(Color.WHITE);
+        this.insertarMotocicletas.setForeground(new Color(3, 92, 134));
+        this.insertarMotocicletas.setFont(new Font("Roboto", Font.BOLD, 20));
+        this.insertarMotocicletas.setEnabled(true); // Encendido del botón
 
         // BOTON ELIMINAR MOTO
-        this.eliminar.setBounds(130, 280, 250, 30);
-        this.eliminar.setBackground(Color.WHITE);
-        this.eliminar.setForeground(new Color(3, 92, 134));
-        this.eliminar.setFont(new Font("Roboto", Font.BOLD, 20));
-        this.eliminar.setEnabled(true); // Encendido del botón
+        this.eliminarMotocicletas.setBounds(130, 260, 250, 30);
+        this.eliminarMotocicletas.setBackground(Color.WHITE);
+        this.eliminarMotocicletas.setForeground(new Color(3, 92, 134));
+        this.eliminarMotocicletas.setFont(new Font("Roboto", Font.BOLD, 20));
+        this.eliminarMotocicletas.setEnabled(true); // Encendido del botón
 
         // BOTON LISTAR MOTO
-        this.listar.setBounds(280, 350, 250, 30);
-        this.listar.setBackground(Color.WHITE);
-        this.listar.setForeground(new Color(3, 92, 134));
-        this.listar.setFont(new Font("Roboto", Font.BOLD, 20));
-        this.listar.setEnabled(true); // Encendido del botón
+        this.listarMotocicletas.setBounds(130, 330, 250, 30);
+        this.listarMotocicletas.setBackground(Color.WHITE);
+        this.listarMotocicletas.setForeground(new Color(3, 92, 134));
+        this.listarMotocicletas.setFont(new Font("Roboto", Font.BOLD, 20));
+        this.listarMotocicletas.setEnabled(true); // Encendido del botón
 
-        // BOTON LISTA COMPONENTES
-        this.lista.setBounds(400, 190, 250, 30);
-        this.lista.setBackground(Color.WHITE);
-        this.lista.setForeground(new Color(3, 92, 134));
-        this.lista.setFont(new Font("Roboto", Font.BOLD, 20));
-        this.lista.setEnabled(true); // Encendido del botón
+        // BOTON AGREGAR COMPONENTES
+        this.agregarComponentes.setBounds(400, 190, 250, 30);
+        this.agregarComponentes.setBackground(Color.WHITE);
+        this.agregarComponentes.setForeground(new Color(3, 92, 134));
+        this.agregarComponentes.setFont(new Font("Roboto", Font.BOLD, 20));
+        this.agregarComponentes.setEnabled(true); // Encendido del botón
+
+        // BOTON ELIMINAR COMPONENTES
+        this.eliminarComponentes.setBounds(400, 260, 250, 30);
+        this.eliminarComponentes.setBackground(Color.WHITE);
+        this.eliminarComponentes.setForeground(new Color(3, 92, 134));
+        this.eliminarComponentes.setFont(new Font("Roboto", Font.BOLD, 20));
+        this.eliminarComponentes.setEnabled(true); // Encendido del botón
+
+        // BOTON LISTAR COMPONENTES
+        this.listarComponentes.setBounds(400, 330, 250, 30);
+        this.listarComponentes.setBackground(Color.WHITE);
+        this.listarComponentes.setForeground(new Color(3, 92, 134));
+        this.listarComponentes.setFont(new Font("Roboto", Font.BOLD, 20));
+        this.listarComponentes.setEnabled(true); // Encendido del botón
+
 
         // BOTON VENDER MOTO
-        this.vender.setBounds(400, 280, 250, 30);
-        this.vender.setBackground(Color.WHITE);
-        this.vender.setForeground(new Color(3, 92, 134));
-        this.vender.setFont(new Font("Roboto", Font.BOLD, 20));
-        this.vender.setEnabled(true); // Encendido del botón
+        this.venderMotocicletas.setBounds(280, 400, 250, 30);
+        this.venderMotocicletas.setBackground(Color.WHITE);
+        this.venderMotocicletas.setForeground(new Color(3, 92, 134));
+        this.venderMotocicletas.setFont(new Font("Roboto", Font.BOLD, 20));
+        this.venderMotocicletas.setEnabled(true); // Encendido del botón
+
+
 
         // BOTON ATRAS MOTO
         this.salirOpciones.setBounds(50, 500, 130  , 30);
@@ -92,7 +115,7 @@ public class VentanaOpciones extends JFrame {
 
 
         // BANNER
-        ImageIcon imagen = new ImageIcon("C:\\Users\\User\\Desktop\\U\\Estructuras de Datos\\Imagenes Proyecto\\banner.jpg");
+        ImageIcon imagen = new ImageIcon("C:\\Users\\User\\Desktop\\U\\Estructuras de Datos\\Imagenes\\banner.jpg");
         this.imagenBanner = new JLabel();
         this.imagenBanner.setBounds(0, 0, 800, 100);
         this.imagenBanner.setIcon(new ImageIcon(imagen.getImage().getScaledInstance(imagenBanner.getWidth(), imagenBanner.getHeight(), Image.SCALE_SMOOTH)));
@@ -114,12 +137,15 @@ public class VentanaOpciones extends JFrame {
     public void adicionar(){
         this.add(textoOpciones);
 
-        this.add(insertar);
-        this.add(eliminar);
-        this.add(listar);
-        this.add(lista);
-        this.add(vender);
+        this.add(insertarMotocicletas);
+        this.add(eliminarMotocicletas);
+        this.add(listarMotocicletas);
+        this.add(listarComponentes);
+        this.add(venderMotocicletas);
         this.add(salirOpciones);
+        this.add(agregarComponentes);
+        this.add(eliminarComponentes);
+
         this.add(imagenBanner);
         this.add(imagenArbol);
         this.add(imagenFondo);
@@ -202,11 +228,11 @@ public class VentanaOpciones extends JFrame {
         };
 
         salirOpciones.addActionListener(abrirVenPrin);
-        insertar.addActionListener(abrirVenInsertar);
-        eliminar.addActionListener(abrirVenEliminar);
-        listar.addActionListener(abrirVenListar);
-        lista.addActionListener(abrirVenComponentes);
-        vender.addActionListener(abrirVenVender);
+        insertarMotocicletas.addActionListener(abrirVenInsertar);
+        eliminarMotocicletas.addActionListener(abrirVenEliminar);
+        listarMotocicletas.addActionListener(abrirVenListar);
+        listarComponentes.addActionListener(abrirVenComponentes);
+        venderMotocicletas.addActionListener(abrirVenVender);
     }
 
     public void visualizar(){
