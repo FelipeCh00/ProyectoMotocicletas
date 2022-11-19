@@ -40,10 +40,10 @@ public class VentanaInsertar extends JFrame {
     public void inicializarComponentes() {
 
         this.ingresarMoto = new JLabel("<html>Ingresar <p> Motocicleta", SwingConstants.LEFT);
-        this.placa = new JLabel("Placa:",SwingConstants.LEFT);
-        this.modelo = new JLabel("Modelo:",SwingConstants.LEFT);
-        this.cilindraje = new JLabel("Cilindraje:",SwingConstants.LEFT);
-        this.color = new JLabel("Color:",SwingConstants.LEFT);
+        this.placa = new JLabel("Placa:", SwingConstants.LEFT);
+        this.modelo = new JLabel("Modelo:", SwingConstants.LEFT);
+        this.cilindraje = new JLabel("Cilindraje:", SwingConstants.LEFT);
+        this.color = new JLabel("Color:", SwingConstants.LEFT);
         this.ingresarDatos = new JLabel("Ingrese los datos de la Motocicleta: ");
         this.cuadroPlaca = new JTextField();
         this.cuadroModelo = new JTextField();
@@ -60,12 +60,12 @@ public class VentanaInsertar extends JFrame {
         this.setLayout(null);
 
         // ETIQUETA TITULO
-        this.ingresarMoto.setBounds(400,20,300,70);
+        this.ingresarMoto.setBounds(400, 20, 300, 70);
         this.ingresarMoto.setForeground(Color.white);
         this.ingresarMoto.setFont(new Font("Felix Titling", Font.BOLD, 30));
 
         // ETIQUETA DATOS
-        this.ingresarDatos.setBounds(50,130,600,50);
+        this.ingresarDatos.setBounds(50, 130, 600, 50);
         this.ingresarDatos.setForeground(Color.white);
         this.ingresarDatos.setFont(new Font("Roboto", Font.BOLD, 20));
 
@@ -144,8 +144,6 @@ public class VentanaInsertar extends JFrame {
         this.cuadroColor.setFont(new Font("Roboto", Font.PLAIN, 20));
 
 
-
-
     }
 
     public void adicionar() {
@@ -170,7 +168,7 @@ public class VentanaInsertar extends JFrame {
         this.setVisible(false);
     }
 
-    public void enviarDatos(ActionEvent a){
+    public void enviarDatos(ActionEvent a) {
         insertarNodo();
         VentanaOpciones vp = new VentanaOpciones();
         vp.setVisible(true);
@@ -199,7 +197,6 @@ public class VentanaInsertar extends JFrame {
 
     }
 
-
     public void visualizar() {
         this.setSize(800, 600);
         this.setVisible(true);
@@ -218,9 +215,9 @@ public class VentanaInsertar extends JFrame {
         Nodo nuevoNodo = new Nodo();
         nuevoNodo.setPlaca(cuadroPlaca.getText());
         nuevoNodo.setModelo(cuadroModelo.getText());
-        try{
+        try {
             nuevoNodo.setCilindraje(Integer.parseInt(cuadroCilindraje.getText()));
-        }catch (Exception e){
+        } catch (Exception e) {
             System.out.println("Cilindraje invalido");
         }
         nuevoNodo.setColor(cuadroColor.getText());

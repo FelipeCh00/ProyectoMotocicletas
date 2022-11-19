@@ -115,7 +115,8 @@ public class VentanaOpciones extends JFrame {
 
 
         // BANNER
-        ImageIcon imagen = new ImageIcon("C:\\Users\\User\\Desktop\\U\\Estructuras de Datos\\Imagenes\\banner.jpg");
+        ImageIcon imagen = new ImageIcon("C:\\Users\\User\\Desktop\\Java\\Proyectos\\EstructurasDeDatosClases\\src\\EstructuraDeDatos\\src\\" +
+                "ProyectoMotocicletas\\Imagenes\\banner.jpg");
         this.imagenBanner = new JLabel();
         this.imagenBanner.setBounds(0, 0, 800, 100);
         this.imagenBanner.setIcon(new ImageIcon(imagen.getImage().getScaledInstance(imagenBanner.getWidth(), imagenBanner.getHeight(), Image.SCALE_SMOOTH)));
@@ -135,6 +136,7 @@ public class VentanaOpciones extends JFrame {
     }
 
     public void adicionar(){
+
         this.add(textoOpciones);
 
         this.add(insertarMotocicletas);
@@ -187,6 +189,18 @@ public class VentanaOpciones extends JFrame {
         this.setVisible(false);
     }
 
+    public void abrirVentAgregarComponentes(ActionEvent a) {
+        VentanaAgregarComponentes vp = new VentanaAgregarComponentes();
+        vp.setVisible(true);
+        this.setVisible(false);
+    }
+
+    public void abrirVentEliminarComponentes(ActionEvent a) {
+        VentanaEliminarComponentes vp = new VentanaEliminarComponentes();
+        vp.setVisible(true);
+        this.setVisible(false);
+    }
+
 
 
     public void acciones(){
@@ -226,6 +240,18 @@ public class VentanaOpciones extends JFrame {
                 abrirVentVender(ae);
             }
         };
+        ActionListener abrirVenAgreComp = new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent ae) {
+                abrirVentAgregarComponentes(ae);
+            }
+        };
+        ActionListener abrirVenElimComp = new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent ae) {
+                abrirVentEliminarComponentes(ae);
+            }
+        };
 
         salirOpciones.addActionListener(abrirVenPrin);
         insertarMotocicletas.addActionListener(abrirVenInsertar);
@@ -233,6 +259,8 @@ public class VentanaOpciones extends JFrame {
         listarMotocicletas.addActionListener(abrirVenListar);
         listarComponentes.addActionListener(abrirVenComponentes);
         venderMotocicletas.addActionListener(abrirVenVender);
+        agregarComponentes.addActionListener(abrirVenAgreComp);
+        eliminarComponentes.addActionListener(abrirVenElimComp);
     }
 
     public void visualizar(){

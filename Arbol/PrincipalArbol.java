@@ -1,5 +1,4 @@
 package ProyectoMotocicletas.Arbol;
-import ProyectoMotocicletas.Ventanas.VentanaInsertar;
 
 import java.io.InputStreamReader;
 import java.util.Scanner;
@@ -110,8 +109,10 @@ public class PrincipalArbol {
                     Nodo a = buscarMoto(moto);
                     if (a == null) {
                         System.out.println("No se encontró");
-                    }else{
-                        a.eliminarComponente();
+                    } else {
+                        // El argumento moto fue agregado para solucionar un error,
+                        // pero no es correcto en esta parte
+                        a.eliminarComponente(moto);
                     }
                 case 8:
                     System.out.println("Saliendo");
@@ -129,9 +130,9 @@ public class PrincipalArbol {
         System.out.println("Ingrese el modelo: ");
         nuevoNodo.setModelo(leer());
         System.out.println("Ingrese el cilindraje (solo números): ");
-        try{
+        try {
             nuevoNodo.setCilindraje(Integer.parseInt(leer()));
-        }catch (Exception e){
+        } catch (Exception e) {
             System.out.println("Cilindraje invalido");
         }
 
@@ -177,7 +178,7 @@ public class PrincipalArbol {
     // BUSCAR NODOS
     public Nodo buscarMoto(String placa) {
 
-        if(raiz!=null){
+        if (raiz != null) {
             Nodo aux = raiz;
             while (aux.getPlaca().compareTo(placa) != 0) {
                 if (placa.compareTo(aux.getPlaca()) < 0) {
@@ -190,7 +191,7 @@ public class PrincipalArbol {
                 }
             }
             return aux;
-        }else{
+        } else {
             System.out.println("No hay motocicletas");
         }
         return null;
@@ -218,7 +219,6 @@ public class PrincipalArbol {
         }
 
     }
-
 
     // IMPRIMIR COMPONENTES
     public void imprimirComponentes() {

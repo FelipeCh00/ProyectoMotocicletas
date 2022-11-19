@@ -16,6 +16,7 @@ public class VentanaListar extends JFrame {
     private JButton imprimirPostorden;
     private JButton imprimirInorden;
     private JTextArea cuadroNodos;
+    private JScrollPane barra;
 
     public VentanaListar() {
         inicializarComponentes();
@@ -29,12 +30,13 @@ public class VentanaListar extends JFrame {
     public void inicializarComponentes() {
 
         this.banner = new JLabel();
-        this.listarMoto = new JLabel("<html>Listar <p> Motocicletas",SwingConstants.CENTER);
+        this.listarMoto = new JLabel("<html>Listar <p> Motocicletas", SwingConstants.CENTER);
         this.atras = new JButton("Atrás");
         this.imprimirPreorden = new JButton("Preorden");
         this.imprimirPostorden = new JButton("Postorden");
-        this.imprimirInorden= new JButton("Inorden");
+        this.imprimirInorden = new JButton("Inorden");
         this.cuadroNodos = new JTextArea();
+        this.barra = new JScrollPane();
     }
 
     public void dimensionar() {
@@ -84,9 +86,12 @@ public class VentanaListar extends JFrame {
 
 
         // CUADRO NODOS
-        this.cuadroNodos.setBounds(100,250,600,200);
-        this.cuadroNodos.setFont(new Font("Roboto", Font.BOLD, 20));
+        this.cuadroNodos.setBounds(100, 250, 600, 200);
+        this.cuadroNodos.setFont(new Font("Roboto", Font.BOLD, 12));
 
+
+       this.barra.setBounds(10,10,100,100);
+        this.cuadroNodos.setPreferredSize(new Dimension(100,100));
 
     }
 
@@ -98,33 +103,17 @@ public class VentanaListar extends JFrame {
         this.add(imprimirPostorden);
         this.add(imprimirInorden);
         this.add(cuadroNodos);
+        this.add(barra);
 
     }
 
-    public void abrirVentOpciones(ActionEvent a) {
-        VentanaOpciones vp = new VentanaOpciones();
-        vp.setVisible(true);
-        this.setVisible(false);
-    }
+    public void visualizar() {
+        this.setSize(800, 600);
+        this.setVisible(true);
+        setLocationRelativeTo(null);
+        setMinimumSize(new Dimension(200, 200));
+        this.getContentPane().setBackground(new Color(30, 30, 30)); //Poner Color RGB en el fondo
 
-    public void preOrder(Nodo r) {
-        if (r != null) {
-            cuadroNodos.append(r.toString()+"\n");
-            preOrder(r.izquierda);
-            preOrder(r.derecha);
-        }
-    }
-
-    public boolean estaVacio() {
-        return VentanaInsertar.raiz == null;
-    }
-
-    public void imprimirPre(ActionEvent a){
-        if (!estaVacio()) {
-            preOrder(VentanaInsertar.raiz);
-        } else {
-            System.out.println("Esta vacío");
-        }
     }
 
     public void acciones() {
@@ -142,17 +131,90 @@ public class VentanaListar extends JFrame {
                 imprimirPre(ae);
             }
         };
-
         imprimirPreorden.addActionListener(preorden);
+
+        ActionListener postorden = new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent ae) {
+                imprimirPost(ae);
+            }
+        };
+        imprimirPostorden.addActionListener(postorden);
+
+        ActionListener inorden = new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent ae) {
+                imprimirIn(ae);
+            }
+        };
+        imprimirInorden.addActionListener(inorden);
     }
 
-    public void visualizar() {
-        this.setSize(800, 600);
-        this.setVisible(true);
-        setLocationRelativeTo(null);
-        setMinimumSize(new Dimension(200, 200));
-        this.getContentPane().setBackground(new Color(30, 30, 30)); //Poner Color RGB en el fondo
+    public void abrirVentOpciones(ActionEvent a) {
+        VentanaOpciones vp = new VentanaOpciones();
+        vp.setVisible(true);
+        this.setVisible(false);
+    }
 
+    public void imprimirPre(ActionEvent a) {
+        cuadroNodos.setText("Lista:\n");
+        if (!estaVacio()) {
+            preOrder(VentanaInsertar.raiz);
+        } else {
+            cuadroNodos.setText("No se encuentran Motocicletas");
+        }
+    }
+
+    public void imprimirPost(ActionEvent a) {
+        cuadroNodos.setText("Lista\n");
+        if (!estaVacio()) {
+            posOrder(VentanaInsertar.raiz);
+        } else {
+            cuadroNodos.setText("No se encuentran Motocicletas");
+        }
+    }
+
+    public void imprimirIn(ActionEvent a) {
+        cuadroNodos.setText("Lista\n");
+        if (!estaVacio()) {
+            inOrder(VentanaInsertar.raiz);
+        } else {
+            cuadroNodos.setText("No se encuentran Motocicletas");
+        }
+    }
+
+
+    // PREORDEN --> NODO, IZQUIERDA, DERECHA
+    public void preOrder(Nodo r) {
+        if (r != null) {
+            cuadroNodos.append(r.toString() + "\n");
+            preOrder(r.izquierda);
+            preOrder(r.derecha);
+        }
+    }
+
+    // INORDEN --> IZQUIERDA, NODO, DERECHA
+    public void inOrder(Nodo r) {
+        if (r != null) {
+            inOrder(r.izquierda);
+            cuadroNodos.append(r.toString() + "\n");
+            inOrder(r.derecha);
+
+        }
+    }
+
+    // POSTORDEN --> IZQUIERDA, DERECHA, NODO
+    public void posOrder(Nodo r) {
+        if (r != null) {
+            posOrder(r.izquierda);
+            posOrder(r.derecha);
+            cuadroNodos.append(r.toString() + "\n");
+
+        }
+    }
+
+    public boolean estaVacio() {
+        return VentanaInsertar.raiz == null;
     }
 
 }

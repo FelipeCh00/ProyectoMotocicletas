@@ -162,8 +162,6 @@ public class VentanaPrincipal extends JFrame {
         this.setVisible(true);
         setLocationRelativeTo(null);
         setMinimumSize(new Dimension(200, 200));
-
-
         // this.getContentPane().setBackground(new Color(178, 2, 2));
     }
 

@@ -1,4 +1,8 @@
 package ProyectoMotocicletas.Arbol;
+
+import ProyectoMotocicletas.Ventanas.VentanaAgregarComponentes;
+import ProyectoMotocicletas.Ventanas.VentanaEliminarComponentes;
+
 import java.io.InputStreamReader;
 import java.util.Scanner;
 
@@ -37,32 +41,28 @@ public class Nodo {
         }
     }
 
-
     public Componente crearComponentes() {
 
         Componente componente = new Componente();
-        System.out.println("Digite el nombre del componente: ");
-        componente.setNombre(leer());
-        System.out.println("Digite la referencia: ");
-        componente.setReferencia(leer());
-        System.out.println("Digite el precio: ");
-        componente.setPrecio(Integer.parseInt(leer()));
+        componente.setNombre(VentanaAgregarComponentes.nombre.getText());
+        componente.setReferencia(VentanaAgregarComponentes.referencia.getText());
+        componente.setPrecio(Integer.parseInt(VentanaAgregarComponentes.precio.getText()));
         return componente;
     }
 
-    public void eliminarComponente(){
+    public void eliminarComponente(String componente) {
 
         Componente nodo = cabeza;
 
         String componenteUsuario;
-        System.out.println("Digite el nombre del componente que quiere eliminar");
-        componenteUsuario = leer();
+        VentanaEliminarComponentes.nombreComponente.setVisible(true);
+        VentanaEliminarComponentes.componenteCuadro.setVisible(true);
+        componenteUsuario = componente;
 
         boolean flag = false;
         while (nodo != null) {
             if (nodo.getNombre().compareTo(componenteUsuario) == 0) {
                 flag = true;
-                System.out.println("Componente eliminado");
                 if (nodo == cabeza) {//Eliminar Cabeza
                     cabeza = cabeza.siguiente;
                 } else if (nodo == fin) {// Eliminar Fin
@@ -86,16 +86,14 @@ public class Nodo {
             nodo = nodo.siguiente;
         }
         if (flag) {
-            System.out.println("El componente de la Motocicleta ha sido eliminado");
+            VentanaEliminarComponentes.mensajeNoEncontrado.setVisible(false);
+            VentanaEliminarComponentes.mensajeCompEliminado.setVisible(true);
         } else {
-            System.out.println("No se encontró ese Componente");
+            VentanaEliminarComponentes.mensajeCompEliminado.setVisible(false);
+            VentanaEliminarComponentes.mensajeNoEncontrado.setVisible(true);
         }
 
     }
-
-
-
-
 
     public String getPlaca() {
         return placa;
