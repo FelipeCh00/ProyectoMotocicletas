@@ -7,7 +7,7 @@ import java.awt.event.ActionListener;
 
 public class VentanaVender extends JFrame {
 
-    private JLabel venderMoto;
+    private  JLabel eliminarMoto;
     private JLabel banner;
     private JButton atras;
 
@@ -17,30 +17,23 @@ public class VentanaVender extends JFrame {
         adicionar();
         visualizar();
         acciones();
-        setTitle("Vender Motocicleta");
+        setTitle("Eliminar Motocicleta");
     }
 
     public void inicializarComponentes() {
-        this.banner = new JLabel();
-        this.venderMoto = new JLabel("<html>Vender <p> Motocicletas",SwingConstants.CENTER);
         this.atras = new JButton("Atrás");
+        this.banner = new JLabel();
+        this.eliminarMoto = new JLabel("<html>Eliminar <p> Motocicleta");
+
     }
 
     public void dimensionar() {
         this.setLayout(null);
 
         // ETIQUETA TITULO
-        this.venderMoto.setBounds(400, 20, 350, 90);
-        this.venderMoto.setForeground(Color.white);
-        this.venderMoto.setFont(new Font("Felix Titling", Font.BOLD, 40));
-
-
-        // BANNER
-        ImageIcon imagen = new ImageIcon("C:\\Users\\User\\Desktop\\U\\Estructuras de Datos\\Imagenes Proyecto\\banner8.png");
-        this.banner = new JLabel();
-        this.banner.setBounds(0, 0, 800, 150);
-        this.banner.setIcon(new ImageIcon(imagen.getImage().getScaledInstance(banner.getWidth(), banner.getHeight(), Image.SCALE_SMOOTH)));
-
+        this.eliminarMoto.setBounds(90,20,320,90);
+        this.eliminarMoto.setForeground(Color.white);
+        this.eliminarMoto.setFont(new Font("Felix Titling", Font.BOLD, 40));
 
 
         // BOTON ATRAS
@@ -50,12 +43,18 @@ public class VentanaVender extends JFrame {
         this.atras.setFont(new Font("Roboto", Font.BOLD, 20));
         this.atras.setEnabled(true); // Encendido del botón
 
+        // BANNER
+        ImageIcon imagen = new ImageIcon("C:\\Users\\User\\Desktop\\U\\Estructuras de Datos\\Imagenes Proyecto\\banner3.jpg");
+        this.banner = new JLabel();
+        this.banner.setBounds(0, 0, 800, 150);
+        this.banner.setIcon(new ImageIcon(imagen.getImage().getScaledInstance(banner.getWidth(), banner.getHeight(), Image.SCALE_SMOOTH)));
+
     }
 
     public void adicionar() {
-        this.add(venderMoto);
-        this.add(banner);
+        this.add(eliminarMoto);
         this.add(atras);
+        this.add(banner);
     }
 
     public void abrirVentOpciones(ActionEvent a) {
@@ -84,5 +83,11 @@ public class VentanaVender extends JFrame {
         this.getContentPane().setBackground(new Color(30, 30, 30)); //Poner Color RGB en el fondo
 
     }
+
+
+
+
+
+
 
 }

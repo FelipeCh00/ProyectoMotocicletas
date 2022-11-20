@@ -10,12 +10,12 @@ public class VentanaOpciones extends JFrame {
 
     private JLabel textoOpciones;
     private JButton insertarMotocicletas;
-    private JButton eliminarMotocicletas;
+    private JButton venderMoto;
     private JButton listarMotocicletas;
     private JButton listarComponentes;
     private JButton agregarComponentes;
     private JButton eliminarComponentes;
-    private JButton venderMotocicletas;
+    private JButton actualizarMoto;
     private JButton salirOpciones;
     private JLabel imagenBanner;
     private JLabel imagenArbol;
@@ -36,10 +36,10 @@ public class VentanaOpciones extends JFrame {
         this.agregarComponentes = new JButton("Agregar Componentes");
         this.eliminarComponentes = new JButton("Eliminar Componentes");
         this.insertarMotocicletas = new JButton("Agregar Motocicleta");
-        this.eliminarMotocicletas = new JButton("Eliminar Motocicleta");
+        this.venderMoto = new JButton("Vender Motocicleta");
         this.listarMotocicletas = new JButton("Listar Motocicletas");
         this.listarComponentes = new JButton("Listar Componentes");
-        this.venderMotocicletas = new JButton("Vender Motocicleta");
+        this.actualizarMoto = new JButton("Actualizar Motocicleta");
         this.salirOpciones = new JButton("Atrás");
 
         this.imagenFondo = new JLabel();
@@ -61,11 +61,11 @@ public class VentanaOpciones extends JFrame {
         this.insertarMotocicletas.setEnabled(true); // Encendido del botón
 
         // BOTON ELIMINAR MOTO
-        this.eliminarMotocicletas.setBounds(130, 260, 250, 30);
-        this.eliminarMotocicletas.setBackground(Color.WHITE);
-        this.eliminarMotocicletas.setForeground(new Color(3, 92, 134));
-        this.eliminarMotocicletas.setFont(new Font("Roboto", Font.BOLD, 20));
-        this.eliminarMotocicletas.setEnabled(true); // Encendido del botón
+        this.venderMoto.setBounds(130, 260, 250, 30);
+        this.venderMoto.setBackground(Color.WHITE);
+        this.venderMoto.setForeground(new Color(3, 92, 134));
+        this.venderMoto.setFont(new Font("Roboto", Font.BOLD, 20));
+        this.venderMoto.setEnabled(true); // Encendido del botón
 
         // BOTON LISTAR MOTO
         this.listarMotocicletas.setBounds(130, 330, 250, 30);
@@ -96,12 +96,12 @@ public class VentanaOpciones extends JFrame {
         this.listarComponentes.setEnabled(true); // Encendido del botón
 
 
-        // BOTON VENDER MOTO
-        this.venderMotocicletas.setBounds(280, 400, 250, 30);
-        this.venderMotocicletas.setBackground(Color.WHITE);
-        this.venderMotocicletas.setForeground(new Color(3, 92, 134));
-        this.venderMotocicletas.setFont(new Font("Roboto", Font.BOLD, 20));
-        this.venderMotocicletas.setEnabled(true); // Encendido del botón
+        // BOTON ACTUALIZAR MOTO
+        this.actualizarMoto.setBounds(130, 400, 250, 30);
+        this.actualizarMoto.setBackground(Color.WHITE);
+        this.actualizarMoto.setForeground(new Color(3, 92, 134));
+        this.actualizarMoto.setFont(new Font("Roboto", Font.BOLD, 20));
+        this.actualizarMoto.setEnabled(true); // Encendido del botón
 
 
 
@@ -140,10 +140,10 @@ public class VentanaOpciones extends JFrame {
         this.add(textoOpciones);
 
         this.add(insertarMotocicletas);
-        this.add(eliminarMotocicletas);
+        this.add(venderMoto);
         this.add(listarMotocicletas);
         this.add(listarComponentes);
-        this.add(venderMotocicletas);
+        this.add(actualizarMoto);
         this.add(salirOpciones);
         this.add(agregarComponentes);
         this.add(eliminarComponentes);
@@ -166,7 +166,7 @@ public class VentanaOpciones extends JFrame {
     }
 
     public void abrirVentEliminar(ActionEvent a) {
-        VentanaEliminar vp = new VentanaEliminar();
+        VentanaVender vp = new VentanaVender();
         vp.setVisible(true);
         this.setVisible(false);
     }
@@ -184,7 +184,7 @@ public class VentanaOpciones extends JFrame {
     }
 
     public void abrirVentVender(ActionEvent a) {
-        VentanaVender vp = new VentanaVender();
+        VentanaActualizarMoto vp = new VentanaActualizarMoto();
         vp.setVisible(true);
         this.setVisible(false);
     }
@@ -255,10 +255,10 @@ public class VentanaOpciones extends JFrame {
 
         salirOpciones.addActionListener(abrirVenPrin);
         insertarMotocicletas.addActionListener(abrirVenInsertar);
-        eliminarMotocicletas.addActionListener(abrirVenEliminar);
+        venderMoto.addActionListener(abrirVenEliminar);
         listarMotocicletas.addActionListener(abrirVenListar);
         listarComponentes.addActionListener(abrirVenComponentes);
-        venderMotocicletas.addActionListener(abrirVenVender);
+        actualizarMoto.addActionListener(abrirVenVender);
         agregarComponentes.addActionListener(abrirVenAgreComp);
         eliminarComponentes.addActionListener(abrirVenElimComp);
     }

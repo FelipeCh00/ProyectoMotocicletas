@@ -53,7 +53,7 @@ public class VentanaAgregarComponentes extends JFrame {
         this.precio = new JTextField();
         this.buscar = new JButton("Buscar");
         this.agregar = new JButton("Agregar");
-        this.noEncontrado = new JLabel("No se encontró la Motocicleta",SwingConstants.CENTER);
+        this.noEncontrado = new JLabel("No se encontró la Motocicleta", SwingConstants.CENTER);
     }
 
     public void dimensionar() {
@@ -249,7 +249,7 @@ public class VentanaAgregarComponentes extends JFrame {
                 precioComponente.setVisible(false);
                 agregueDatos.setVisible(false);
                 agregar.setVisible(false);
-            }else if (m.getPlaca().compareTo(moto) == 0) {
+            } else if (m.getPlaca().compareTo(moto) == 0) {
                 noEncontrado.setVisible(false);
                 nombre.setVisible(true);
                 referencia.setVisible(true);

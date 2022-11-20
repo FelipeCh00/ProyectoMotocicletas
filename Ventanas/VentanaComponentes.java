@@ -10,7 +10,7 @@ import java.awt.event.ActionListener;
 
 public class VentanaComponentes extends JFrame {
 
-    private  JLabel listarComponentes;
+    private JLabel listarComponentes;
     private JLabel banner;
     private JLabel buscarTexto;
 
@@ -21,8 +21,7 @@ public class VentanaComponentes extends JFrame {
     private JTextField buscarCuadro;
 
 
-
-    public VentanaComponentes(){
+    public VentanaComponentes() {
         inicializarComponentes();
         dimensionar();
         adicionar();
@@ -46,7 +45,7 @@ public class VentanaComponentes extends JFrame {
         this.setLayout(null);
 
         // ETIQUETA TITULO
-        this.listarComponentes.setBounds(90,30,320,90);
+        this.listarComponentes.setBounds(90, 30, 320, 90);
         this.listarComponentes.setForeground(Color.white);
         this.listarComponentes.setFont(new Font("Felix Titling", Font.BOLD, 40));
 
@@ -126,7 +125,7 @@ public class VentanaComponentes extends JFrame {
         setLocationRelativeTo(null);
         setMinimumSize(new Dimension(200, 200));
         this.getContentPane().setBackground(new Color(30, 30, 30)); //Poner Color RGB en el fondo
-
+        cuadroLista.setVisible(false);
     }
 
     public Nodo buscarMoto(String placa) {
@@ -155,15 +154,17 @@ public class VentanaComponentes extends JFrame {
         if (!estaVacio()) {
             Nodo motoComponentes = buscarMoto(moto);
             if (motoComponentes == null) {
+                cuadroLista.setVisible(true);
                 cuadroLista.setText("No se encontró esa motocicleta");
 
-            }else if (motoComponentes.getPlaca().compareTo(moto) == 0) {
+            } else if (motoComponentes.getPlaca().compareTo(moto) == 0) {
+                cuadroLista.setVisible(true);
                 cuadroLista.setText("");
                 if (motoComponentes.cabeza != null) {
                     Componente aux = motoComponentes.cabeza;
                     while (aux != null) {
                         cuadroLista.append("-----------------------------\n");
-                        cuadroLista.append("Componente: " + aux+"\n");
+                        cuadroLista.append("Componente: " + aux + "\n");
                         aux = aux.siguiente;
                         cuadroLista.append("-----------------------------\n");
                     }
@@ -177,6 +178,7 @@ public class VentanaComponentes extends JFrame {
 
         } else {
             System.out.println("No está");
+            cuadroLista.setVisible(true);
             cuadroLista.setText("No  se han agregado motocicletas aún");
 
         }
