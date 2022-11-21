@@ -216,7 +216,6 @@ public class VentanaOpciones extends JFrame {
         this.setVisible(false);
     }
 
-
     public void acciones(){
         ActionListener abrirVenPrin = new ActionListener() {
             @Override

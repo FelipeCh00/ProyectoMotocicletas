@@ -239,7 +239,6 @@ public class VentanaAgregarComponentes extends JFrame {
         if (!estaVacio()) {
             Nodo m = buscarMoto(moto);
             if (m == null) {
-                System.out.println("No se encontró esa motocicleta");
                 noEncontrado.setVisible(true);
                 nombre.setVisible(false);
                 referencia.setVisible(false);
@@ -262,7 +261,6 @@ public class VentanaAgregarComponentes extends JFrame {
             }
 
         } else {
-            System.out.println("No está");
             noEncontrado.setVisible(true);
             nombre.setVisible(false);
             referencia.setVisible(false);

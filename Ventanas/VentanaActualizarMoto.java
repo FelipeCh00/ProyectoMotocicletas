@@ -306,7 +306,6 @@ public class VentanaActualizarMoto extends JFrame {
         if (!estaVacio()) {
             Nodo m = buscarMoto(moto);
             if (m == null) {
-                System.out.println("No se encontró esa motocicleta");
                 noEncontrado.setVisible(true);
                 placa.setVisible(false);
                 modelo.setVisible(false);
@@ -325,7 +324,6 @@ public class VentanaActualizarMoto extends JFrame {
             }
 
         } else {
-            System.out.println("No está");
             noEncontrado.setVisible(true);
             placa.setVisible(false);
             modelo.setVisible(false);

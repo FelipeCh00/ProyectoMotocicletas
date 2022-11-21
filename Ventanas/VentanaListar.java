@@ -166,7 +166,7 @@ public class VentanaListar extends JFrame {
     }
 
     public void imprimirPost(ActionEvent a) {
-        cuadroNodos.setText("Lista\n");
+        cuadroNodos.setText("Lista:\n");
         if (!estaVacio()) {
             posOrder(VentanaInsertar.raiz);
         } else {
@@ -175,7 +175,7 @@ public class VentanaListar extends JFrame {
     }
 
     public void imprimirIn(ActionEvent a) {
-        cuadroNodos.setText("Lista\n");
+        cuadroNodos.setText("Lista:\n");
         if (!estaVacio()) {
             inOrder(VentanaInsertar.raiz);
         } else {

@@ -236,13 +236,10 @@ public class VentanaEliminarComponentes extends JFrame {
         if (!estaVacio()) {
             Nodo m = buscarMoto(moto);
             if (m == null) {
-                System.out.println("No se encontró esa motocicleta");
                 noEncontrado.setVisible(true);
                 nombreComponente.setVisible(false);
                 componenteCuadro.setVisible(false);
                 this.buscarBoton2.setVisible(false);
-
-
 
             } else if (m.getPlaca().compareTo(moto) == 0) {
                 this.noEncontrado.setVisible(false);
@@ -253,7 +250,6 @@ public class VentanaEliminarComponentes extends JFrame {
             }
 
         } else {
-            System.out.println("No está");
             this.noEncontrado.setVisible(true);
             nombreComponente.setVisible(false);
             componenteCuadro.setVisible(false);

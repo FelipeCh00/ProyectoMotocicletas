@@ -131,7 +131,6 @@ public class VentanaRegistro extends JFrame {
         }
     }
 
-
     public void acciones() {
         ActionListener devolver = new ActionListener() {
             @Override

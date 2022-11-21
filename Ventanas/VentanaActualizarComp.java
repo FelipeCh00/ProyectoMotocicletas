@@ -7,6 +7,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.security.spec.ECField;
 
 public class VentanaActualizarComp extends JFrame {
 
@@ -283,7 +284,6 @@ public class VentanaActualizarComp extends JFrame {
         if (!estaVacio()) {
             Nodo m = buscarMoto(moto);
             if (m == null) {
-                System.out.println("No se encontró esa motocicleta");
                 noEncontradoMoto.setVisible(true);
                 fueActualizado.setVisible(false);
                 nombreComp.setVisible(false);
@@ -302,7 +302,6 @@ public class VentanaActualizarComp extends JFrame {
             }
 
         } else {
-            System.out.println("No está");
             noEncontradoMoto.setVisible(true);
             fueActualizado.setVisible(false);
             nombreComp.setVisible(false);
@@ -402,7 +401,16 @@ public class VentanaActualizarComp extends JFrame {
                     nodo.setReferencia(referencia.getText());
                 }
                 if (precio.getText()!= null) {
-                    nodo.setPrecio(Integer.parseInt(precio.getText()));
+
+                    int numero = 0;
+                    try {
+                        numero = Integer.parseInt(precio.getText());
+                        nodo.setPrecio(numero);
+                    }catch (Exception e){
+                        System.out.println("Precio tiene que ser un número");
+                    }
+
+
                 }
                 break;
             }
