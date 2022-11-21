@@ -1,5 +1,7 @@
 package ProyectoMotocicletas.Ventanas;
 
+import ProyectoMotocicletas.MetodosSQL.MetodosSQL;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -12,12 +14,17 @@ public class VentanaPrincipal extends JFrame {
     private JLabel tituloProyecto;
     private JLabel etqUsuario;
     private JLabel etqContrasena;
+    private JLabel registrese;
+
     private JTextField usuario;
     private JPasswordField password;
+
     private JButton iniciar;
     private JButton imagenSalir;
     private JButton imagenEntrar;
+    private JButton registro;
 
+    MetodosSQL metodos = new MetodosSQL();
 
     public VentanaPrincipal() {
         inicializarComponentes();
@@ -40,6 +47,8 @@ public class VentanaPrincipal extends JFrame {
         this.iniciar = new JButton("Iniciar");
         this.imagenSalir = new JButton();
         this.imagenEntrar = new JButton();
+        this.registro = new JButton("Registrarse");
+        this.registrese = new JLabel("Usuario no encontrado, por favor regístrese");
 
     }
 
@@ -110,6 +119,17 @@ public class VentanaPrincipal extends JFrame {
         ImageIcon imagenBoton2 = new ImageIcon("C:\\Users\\User\\Desktop\\U\\Estructuras de Datos\\Imagenes Proyecto\\Abierto.jpg");
         this.imagenEntrar.setIcon(new ImageIcon(imagenBoton2.getImage().getScaledInstance(imagenEntrar.getWidth(), imagenEntrar.getHeight(), Image.SCALE_SMOOTH)));
 
+        // BOTON REGISTRO
+        this.registro.setBounds(340,420,150,40);
+        this.registro.setBackground(new Color(117, 114, 114));
+        this.registro.setForeground(new Color(255, 255, 255));
+        this.registro.setFont(new Font("Roboto", Font.BOLD, 16));
+        this.registro.setEnabled(true); // Encendido del botón
+
+        //ETIQUETA REGISTRESE
+        this.registrese.setBounds(300, 440, 400, 30);//inicio x, inicio y, desplazamiento x, desplazamiento y
+        this.registrese.setForeground(Color.BLACK);
+        this.registrese.setFont(new Font("Roboto", Font.PLAIN, 20));
 
 
     }
@@ -124,11 +144,34 @@ public class VentanaPrincipal extends JFrame {
         this.add(imagenSalir);
         this.add(imagenEntrar);
         this.add(creditos);
+        this.add(registro);
 
     }
 
     public void abrirVent2(ActionEvent a) {
-        VentanaOpciones vp = new VentanaOpciones();
+
+
+        String busquedaUsuario = metodos.buscarUserRegistrado(usuario.getText(),password.getText());
+
+        if(usuario.getText().equals("root")&&password.getText().equals("root")){
+            System.out.println("Admin capo");
+            VentanaOpciones vp = new VentanaOpciones();
+            vp.setVisible(true);
+            this.setVisible(false);
+        }else if (busquedaUsuario.equals("Usuario encontrado")){
+            String busquedaNombre = metodos.buscarUsuario(usuario.getText());
+            VentanaOpciones vp = new VentanaOpciones();
+            System.out.println("Bienvenido " + busquedaNombre);
+            vp.setVisible(true);
+            this.setVisible(false);
+        }else {
+            registrese.setVisible(true);
+            System.out.println("No se ha registrado");
+        }
+    }
+
+    public void abrirVentRegistro(ActionEvent a) {
+        VentanaRegistro vp = new VentanaRegistro();
         vp.setVisible(true);
         this.setVisible(false);
     }
@@ -151,10 +194,18 @@ public class VentanaPrincipal extends JFrame {
                 salirPrograma(ae);
             }
         };
+        ActionListener registroVen = new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent ae) {
+                abrirVentRegistro(ae);
+            }
+        };
+
 
 
         imagenEntrar.addActionListener(oyenteDeAccion);
         imagenSalir.addActionListener(salir);
+        registro.addActionListener(registroVen);
     }
 
     public void visualizar() {
@@ -163,6 +214,7 @@ public class VentanaPrincipal extends JFrame {
         setLocationRelativeTo(null);
         setMinimumSize(new Dimension(200, 200));
         // this.getContentPane().setBackground(new Color(178, 2, 2));
+        registrese.setVisible(false);
     }
 
 
