@@ -22,6 +22,7 @@ public class VentanaEliminarComponentes extends JFrame {
     private JLabel buscarTexto;
     private JTextField buscarCuadro;
 
+
     private JButton buscarBoton;
     private JButton buscarBoton2;
     private JButton eliminar;

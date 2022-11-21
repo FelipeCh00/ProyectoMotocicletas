@@ -85,9 +85,4 @@ public class VentanaVender extends JFrame {
     }
 
 
-
-
-
-
-
 }

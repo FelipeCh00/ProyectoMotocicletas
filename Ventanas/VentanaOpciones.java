@@ -17,11 +17,12 @@ public class VentanaOpciones extends JFrame {
     private JButton eliminarComponentes;
     private JButton actualizarMoto;
     private JButton salirOpciones;
+    private JButton actualizarComponentes;
     private JLabel imagenBanner;
     private JLabel imagenArbol;
     private JLabel imagenFondo;
 
-    public VentanaOpciones(){
+    public VentanaOpciones() {
         visualizar();
         inicializarComponentes();
         dimensionar();
@@ -30,6 +31,7 @@ public class VentanaOpciones extends JFrame {
         setTitle("Menú de opciones");
 
     }
+
     public void inicializarComponentes() {
         this.textoOpciones = new JLabel("Opciones", SwingConstants.CENTER);
 
@@ -40,16 +42,17 @@ public class VentanaOpciones extends JFrame {
         this.listarMotocicletas = new JButton("Listar Motocicletas");
         this.listarComponentes = new JButton("Listar Componentes");
         this.actualizarMoto = new JButton("Actualizar Motocicleta");
+        this.actualizarComponentes = new JButton("Actualizar Componentes");
         this.salirOpciones = new JButton("Atrás");
 
         this.imagenFondo = new JLabel();
     }
 
-    public void dimensionar(){
+    public void dimensionar() {
         this.setLayout(null);
 
         // ETIQUETA TITULO
-        this.textoOpciones.setBounds(450,15,300,50);
+        this.textoOpciones.setBounds(450, 15, 300, 50);
         this.textoOpciones.setForeground(Color.white);
         this.textoOpciones.setFont(new Font("Felix Titling", Font.BOLD, 40));
 
@@ -103,15 +106,20 @@ public class VentanaOpciones extends JFrame {
         this.actualizarMoto.setFont(new Font("Roboto", Font.BOLD, 20));
         this.actualizarMoto.setEnabled(true); // Encendido del botón
 
+        // BOTON ACTUALIZAR COMPONENTES
+        this.actualizarComponentes.setBounds(400, 400, 250, 30);
+        this.actualizarComponentes.setBackground(Color.WHITE);
+        this.actualizarComponentes.setForeground(new Color(3, 92, 134));
+        this.actualizarComponentes.setFont(new Font("Roboto", Font.BOLD, 18));
+        this.actualizarComponentes.setEnabled(true); // Encendido del botón
 
 
         // BOTON ATRAS MOTO
-        this.salirOpciones.setBounds(50, 500, 130  , 30);
+        this.salirOpciones.setBounds(50, 500, 130, 30);
         this.salirOpciones.setBackground(new Color(115, 53, 31));
         this.salirOpciones.setForeground(new Color(255, 255, 255));
         this.salirOpciones.setFont(new Font("Roboto", Font.BOLD, 20));
         this.salirOpciones.setEnabled(true); // Encendido del botón
-
 
 
         // BANNER
@@ -135,7 +143,7 @@ public class VentanaOpciones extends JFrame {
 
     }
 
-    public void adicionar(){
+    public void adicionar() {
 
         this.add(textoOpciones);
 
@@ -147,6 +155,7 @@ public class VentanaOpciones extends JFrame {
         this.add(salirOpciones);
         this.add(agregarComponentes);
         this.add(eliminarComponentes);
+        this.add(actualizarComponentes);
 
         this.add(imagenBanner);
         this.add(imagenArbol);
@@ -201,6 +210,11 @@ public class VentanaOpciones extends JFrame {
         this.setVisible(false);
     }
 
+    public void abrirVentActComponentes(ActionEvent a) {
+        VentanaActualizarComp vp = new VentanaActualizarComp();
+        vp.setVisible(true);
+        this.setVisible(false);
+    }
 
 
     public void acciones(){
@@ -252,6 +266,12 @@ public class VentanaOpciones extends JFrame {
                 abrirVentEliminarComponentes(ae);
             }
         };
+        ActionListener abrirVenActComp = new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent ae) {
+                abrirVentActComponentes(ae);
+            }
+        };
 
         salirOpciones.addActionListener(abrirVenPrin);
         insertarMotocicletas.addActionListener(abrirVenInsertar);
@@ -261,6 +281,7 @@ public class VentanaOpciones extends JFrame {
         actualizarMoto.addActionListener(abrirVenVender);
         agregarComponentes.addActionListener(abrirVenAgreComp);
         eliminarComponentes.addActionListener(abrirVenElimComp);
+        actualizarComponentes.addActionListener(abrirVenActComp);
     }
 
     public void visualizar(){
