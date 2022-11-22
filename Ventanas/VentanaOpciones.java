@@ -9,6 +9,10 @@ public class VentanaOpciones extends JFrame {
 
 
     private JLabel textoOpciones;
+    private JLabel imagenBanner;
+    private JLabel imagenArbol;
+    private JLabel imagenFondo;
+
     private JButton insertarMotocicletas;
     private JButton venderMoto;
     private JButton listarMotocicletas;
@@ -18,9 +22,8 @@ public class VentanaOpciones extends JFrame {
     private JButton actualizarMoto;
     private JButton salirOpciones;
     private JButton actualizarComponentes;
-    private JLabel imagenBanner;
-    private JLabel imagenArbol;
-    private JLabel imagenFondo;
+    private JButton grafico;
+
 
     public VentanaOpciones() {
         visualizar();
@@ -44,6 +47,7 @@ public class VentanaOpciones extends JFrame {
         this.actualizarMoto = new JButton("Actualizar Motocicleta");
         this.actualizarComponentes = new JButton("Actualizar Componentes");
         this.salirOpciones = new JButton("Atrás");
+        this.grafico = new JButton("Gráfico");
 
         this.imagenFondo = new JLabel();
     }
@@ -113,6 +117,13 @@ public class VentanaOpciones extends JFrame {
         this.actualizarComponentes.setFont(new Font("Roboto", Font.BOLD, 18));
         this.actualizarComponentes.setEnabled(true); // Encendido del botón
 
+        // BOTON GRAFICO
+        this.grafico.setBounds(500, 500, 100, 30);
+        this.grafico.setBackground(Color.WHITE);
+        this.grafico.setForeground(new Color(3, 92, 134));
+        this.grafico.setFont(new Font("Roboto", Font.BOLD, 18));
+        this.grafico.setEnabled(true); // Encendido del botón
+
 
         // BOTON ATRAS MOTO
         this.salirOpciones.setBounds(50, 500, 130, 30);
@@ -146,7 +157,7 @@ public class VentanaOpciones extends JFrame {
     public void adicionar() {
 
         this.add(textoOpciones);
-
+        this.add(grafico);
         this.add(insertarMotocicletas);
         this.add(venderMoto);
         this.add(listarMotocicletas);
@@ -216,7 +227,22 @@ public class VentanaOpciones extends JFrame {
         this.setVisible(false);
     }
 
-    public void acciones(){
+    public void abrirVentGrafico(ActionEvent a) {
+
+        if (VentanaInsertar.raiz != null) {
+            if (VentanaInsertar.raiz.cabeza != null) {
+                VentanaGrafico vp = new VentanaGrafico();
+                vp.setVisible(true);
+
+            } else {
+                JOptionPane.showMessageDialog(null, "No se encontraron Componentes", "Error", JOptionPane.WARNING_MESSAGE);
+            }
+        }else {
+            JOptionPane.showMessageDialog(null, "No se encontraron Motocicletas", "Error", JOptionPane.WARNING_MESSAGE);
+        }
+    }
+
+    public void acciones() {
         ActionListener abrirVenPrin = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent ae) {
@@ -271,6 +297,12 @@ public class VentanaOpciones extends JFrame {
                 abrirVentActComponentes(ae);
             }
         };
+        ActionListener abrirVenGraf = new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent ae) {
+                abrirVentGrafico(ae);
+            }
+        };
 
         salirOpciones.addActionListener(abrirVenPrin);
         insertarMotocicletas.addActionListener(abrirVenInsertar);
@@ -281,9 +313,10 @@ public class VentanaOpciones extends JFrame {
         agregarComponentes.addActionListener(abrirVenAgreComp);
         eliminarComponentes.addActionListener(abrirVenElimComp);
         actualizarComponentes.addActionListener(abrirVenActComp);
+        grafico.addActionListener(abrirVenGraf);
     }
 
-    public void visualizar(){
+    public void visualizar() {
         this.setSize(800, 600);
         this.setVisible(true);
         setLocationRelativeTo(null);

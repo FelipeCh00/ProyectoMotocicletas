@@ -43,7 +43,7 @@ public class MetodosSQL {
 
         try {
             conexion = ConexionBD.conectar();
-            String sentenciaBuscar = ("SELECT nickname,FROM usuarios WHERE nickname = '" + nickname + "'");
+            String sentenciaBuscar = ("SELECT nickname FROM usuarios WHERE nickname = '" + nickname + "'");
             sentenciaPreparada = conexion.prepareStatement(sentenciaBuscar);
             resultado = sentenciaPreparada.executeQuery();
             if (resultado.next()) {

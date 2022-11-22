@@ -161,7 +161,6 @@ public class VentanaPrincipal extends JFrame {
         }else if (busquedaUsuario.equals("Usuario encontrado")){
             String busquedaNombre = metodos.buscarUsuario(usuario.getText());
             VentanaOpciones vp = new VentanaOpciones();
-            System.out.println("Bienvenido " + busquedaNombre);
             vp.setVisible(true);
             this.setVisible(false);
         }else {

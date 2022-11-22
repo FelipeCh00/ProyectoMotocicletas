@@ -163,10 +163,8 @@ public class VentanaComponentes extends JFrame {
                 if (motoComponentes.cabeza != null) {
                     Componente aux = motoComponentes.cabeza;
                     while (aux != null) {
-                        cuadroLista.append("-----------------------------\n");
                         cuadroLista.append("Componente: " + aux + "\n");
                         aux = aux.siguiente;
-                        cuadroLista.append("-----------------------------\n");
                     }
                 } else {
                     cuadroLista.append("\n-----------------------------\n");
