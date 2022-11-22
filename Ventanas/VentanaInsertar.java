@@ -200,6 +200,7 @@ public class VentanaInsertar extends JFrame {
     public void visualizar() {
         this.setSize(800, 600);
         this.setVisible(true);
+        this.setResizable(false);
         setLocationRelativeTo(null);
         setMinimumSize(new Dimension(200, 200));
         this.getContentPane().setBackground(new Color(30, 30, 30)); //Poner Color RGB en el fondo

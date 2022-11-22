@@ -154,6 +154,7 @@ public class VentanaRegistro extends JFrame {
         this.setVisible(true);
         setLocationRelativeTo(null);
         setMinimumSize(new Dimension(200, 200));
+        this.setResizable(false);
         this.getContentPane().setBackground(new Color(30, 30, 30)); //Poner Color RGB en el fondo
         registado.setVisible(false);
         noRegistado.setVisible(false);

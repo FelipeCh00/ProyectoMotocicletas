@@ -123,6 +123,7 @@ public class VentanaComponentes extends JFrame {
         this.setSize(800, 600);
         this.setVisible(true);
         setLocationRelativeTo(null);
+        this.setResizable(false);
         setMinimumSize(new Dimension(200, 200));
         this.getContentPane().setBackground(new Color(30, 30, 30)); //Poner Color RGB en el fondo
         cuadroLista.setVisible(false);

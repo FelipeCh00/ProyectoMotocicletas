@@ -44,6 +44,7 @@ public class VentanaGrafico extends JFrame {
 
         this.setVisible(true);
         setLocationRelativeTo(null);
+        this.setResizable(false);
 
     }
 
