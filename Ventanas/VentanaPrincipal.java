@@ -167,6 +167,7 @@ public class VentanaPrincipal extends JFrame {
         }else {
             registrese.setVisible(true);
             System.out.println("No se ha registrado");
+            JOptionPane.showMessageDialog(null,"No se encontró el usuario, regístrese o revise la contraseña","Error",JOptionPane.QUESTION_MESSAGE);
         }
     }
 

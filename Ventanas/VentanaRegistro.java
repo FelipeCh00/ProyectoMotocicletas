@@ -91,7 +91,7 @@ public class VentanaRegistro extends JFrame {
         this.enviar.setEnabled(true); // Encendido del botón
 
         // ETIQUETA REGISTRADO
-        this.registado.setBounds(60, 250, 320, 90);
+        this.registado.setBounds(140, 230, 320, 90);
         this.registado.setForeground(Color.white);
         this.registado.setFont(new Font("Roboto", Font.BOLD, 16));
 

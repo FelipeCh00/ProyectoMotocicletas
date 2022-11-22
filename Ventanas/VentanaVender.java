@@ -82,7 +82,7 @@ public class VentanaVender extends JFrame {
         this.buscarCuadro.setBounds(470, 180, 250, 30);
         this.buscarCuadro.setFont(new Font("Roboto", Font.BOLD, 16));
 
-        // BOTON BUSCAR
+        // BOTON BUSCAR6
         this.buscar.setBounds(590, 210, 130, 30);
         this.buscar.setBackground(new Color(152, 154, 160));
         this.buscar.setForeground(new Color(12, 98, 131));
@@ -238,6 +238,7 @@ public class VentanaVender extends JFrame {
         return null;
     }
 
+
     public boolean eliminar(ActionEvent a) {
 
         String moto = buscarCuadro.getText();
@@ -328,6 +329,7 @@ public class VentanaVender extends JFrame {
         System.out.println("El nodo Reemplazo es " + reemplazo);
         return reemplazo;
 
+        // Créditos: https://www.youtube.com/watch?v=Av1IWdWMDlY&ab_channel=MasterHeHeGar
     }
 
 }
